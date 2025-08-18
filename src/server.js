@@ -11,13 +11,13 @@ const app = express();
 const server = http.createServer(app);
 const io = new SocketIOServer(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN?.split(",") || "*",
+    origin: "*",
     methods: ["GET", "POST", "PATCH"]
   }
 });
 
 // Middleware
-app.use(cors({ origin: process.env.CORS_ORIGIN?.split(",") || "*" }));
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
