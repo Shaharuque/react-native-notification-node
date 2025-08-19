@@ -39,13 +39,13 @@ export default function buildNotificationRouter(io) {
 
   // POST /notifications
   router.post("/", async (req, res) => {
-    const { title, message = "", type = "default", userId = null, payload = {} } = req.body;
+    const { title, message = "", type = "default", userId = null, payload = {}, isRead } = req.body;
 
     if (!title || typeof title !== "string") {
       return res.status(400).json({ error: "title is required" });
     }
 
-    const created = await Notification.create({ title, message, type, userId, payload });
+    const created = await Notification.create({ title, message, type, userId, payload, isRead });
     // Broadcast: if userId present, emit to that room; otherwise global
     if (userId) {
       io.to(`user:${userId}`).emit("new-notification", created);
