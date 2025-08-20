@@ -5,5 +5,5 @@ export async function connectDB() {
   await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.yz2oh.mongodb.net/notification_app?retryWrites=true&w=majority`, {
     serverSelectionTimeoutMS: 10000
   });
-  console.log("✅ MongoDB connected");
+  console.log("MongoDB connected");
 }

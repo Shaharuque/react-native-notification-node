@@ -46,7 +46,7 @@ export default function buildNotificationRouter(io) {
     }
 
     const created = await Notification.create({ title, message, type, userId, payload, isRead });
-    // Broadcast: if userId present, emit to that room; otherwise global
+    // Broadcast: if userId present, emit to that room, otherwise global
     if (userId) {
       io.to(`user:${userId}`).emit("new-notification", created);
     } else {

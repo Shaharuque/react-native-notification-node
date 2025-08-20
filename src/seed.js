@@ -27,7 +27,7 @@ import { Notification } from "./modals/Notification.js";
         isRead: true
       }
     ]);
-    console.log("✅ Seeded notifications");
+    console.log("Seeded notifications");
     process.exit(0);
   } catch (e) {
     console.error(e);

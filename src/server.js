@@ -21,9 +21,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Socket.IO auth & rooms (optional per-user)
+// Socket.IO auth & rooms 
 io.on("connection", (socket) => {
-  // Expect optional userId query to join personal room
   const userId = socket.handshake.auth?.userId || socket.handshake.query?.userId;
   if (userId) {
     socket.join(`user:${userId}`);
