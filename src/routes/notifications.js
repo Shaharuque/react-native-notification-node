@@ -89,3 +89,15 @@ export default function buildNotificationRouter(io) {
 
   return router;
 }
+
+
+// Clear all notifications
+router.delete("/", async (req, res) => {
+  const result = await Notification.deleteMany({});
+  res.json({ deleted: result.deletedCount });
+}); 
+
+
+
+
+
